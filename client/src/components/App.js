@@ -1,8 +1,8 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./Header";
-import connect from "react-redux";
-import * as actions from "../action";
+import { connect } from "react-redux";
+import * as actions from "../actions";
 
 const Dashboard = () => {
   return <h2>Dashboard</h2>;
