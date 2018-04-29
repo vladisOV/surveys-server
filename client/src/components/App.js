@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 import { BrowserRouter, Route } from "react-router-dom";
 import Header from "./Header";
+import Landing from "./Landing";
 import { connect } from "react-redux";
 import * as actions from "../actions";
 
 const Dashboard = () => {
   return <h2>Dashboard</h2>;
-};
-const Landing = () => {
-  return <h2>Landing</h2>;
 };
 const SurveyNew = () => {
   return <h2>SurveyNew</h2>;
