@@ -9,7 +9,7 @@ class Mailer extends help.Mailer {
     this.from_email = new helper.Email("no-reply@surveys.com");
     this.subject = subject;
     this.body = new helper.Content("text/html", content);
-    this.recipients = this.formatAdresses(recipients);
+    this.recipients = this.formatAddresses(recipients);
   }
 }
 
