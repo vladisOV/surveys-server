@@ -13,6 +13,7 @@ class Mailer extends help.Mailer {
 
     this.addContent(this.body);
     this.addClickTracking();
+    this.addRecipients();
   }
 
   formatAddresses(recipients) {
