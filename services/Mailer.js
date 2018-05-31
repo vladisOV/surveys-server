@@ -28,6 +28,14 @@ class Mailer extends help.Mailer {
 
     trackingSettings.setClickTracking(clickTracking);
   }
+
+  addRecipients() {
+    const personalize = new helper.Personalization();
+    this.recipients.forEach(recipient => {
+      persinalize.addTo(recipient);
+      this.addPersonalization(personalize);
+    });
+  }
 }
 
 module.exports = Mailer;
