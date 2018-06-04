@@ -2,11 +2,11 @@ const sendgrid = require("sendgrid");
 const helper = sendgrid.mail;
 const keys = require("../config/keys");
 
-class Mailer extends help.Mailer {
+class Mailer extends helper.Mail {
   constructor({ subject, recipients }, content) {
     super();
 
-    this.sgApi = sendgrid(keys.SEND_GRID_KEY);
+    this.sgApi = sendgrid(keys.sendGridKey);
     this.from_email = new helper.Email("no-reply@surveys.com");
     this.subject = subject;
     this.body = new helper.Content("text/html", content);
@@ -33,7 +33,7 @@ class Mailer extends help.Mailer {
   addRecipients() {
     const personalize = new helper.Personalization();
     this.recipients.forEach(recipient => {
-      persinalize.addTo(recipient);
+      personalize.addTo(recipient);
       this.addPersonalization(personalize);
     });
   }
@@ -44,7 +44,7 @@ class Mailer extends help.Mailer {
       path: "v3/mail/send",
       body: this.toJSON()
     });
-    let response = this.sgApi.send(request);
+    let response = await this.sgApi.API(request);
     return response;
   }
 }
