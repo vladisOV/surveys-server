@@ -28,23 +28,26 @@ class Mailer extends helper.Mail {
     const clickTracking = new helper.ClickTracking(true, true);
 
     trackingSettings.setClickTracking(clickTracking);
+    this.addTrackingSettings(trackingSettings);
   }
 
   addRecipients() {
     const personalize = new helper.Personalization();
+
     this.recipients.forEach(recipient => {
       personalize.addTo(recipient);
-      this.addPersonalization(personalize);
     });
+    this.addPersonalization(personalize);
   }
 
   async send() {
     const request = this.sgApi.emptyRequest({
       method: "POST",
-      path: "v3/mail/send",
+      path: "/v3/mail/send",
       body: this.toJSON()
     });
-    let response = await this.sgApi.API(request);
+
+    const response = await this.sgApi.API(request);
     return response;
   }
 }
